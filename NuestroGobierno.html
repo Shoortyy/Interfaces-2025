@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestro Gobierno Municipal - H. Ayuntamiento de Miahuatlán, Ver.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #4a3a2a;
+            background-color: #faf8f5;
+        }
+
+        /* Header mejorado */
+        .header {
+            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: #faf8f5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #8b4513;
+            overflow: hidden;
+            padding: 8px;
+            border: 3px solid #d4af37;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .header-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            text-align: right;
+            font-size: 0.9rem;
+        }
+
+        /* Navegación principal */
+        .nav-main {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            padding: 0 2rem;
+        }
+
+        .nav-item {
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            color: #4a3a2a;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: #faf8f5;
+            border-bottom-color: #8b4513;
+            color: #8b4513;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            font-size: 0.9rem;
+            color: #666;
+            background: #f5f5f5;
+        }
+
+        .breadcrumb a {
+            color: #8b4513;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contenido principal */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #4a3a2a;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        /* Grid de secciones */
+        .gobierno-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .gobierno-grid-centered {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .gobierno-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gobierno-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #8b4513, #a0522d);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #4a3a2a;
+        }
+
+        .card-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* Presidente Municipal */
+        .presidente-section {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .presidente-photo {
+            width: 200px;
+            height: 250px;
+            background: #f0f0f0;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9rem;
+            border: 3px solid #8b4513;
+            overflow: hidden;
+        }
+
+        .presidente-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .presidente-info {
+            flex: 1;
+        }
+
+        .presidente-name {
+            font-size: 1.5rem;
+            color: #8b4513;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .presidente-title {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .contacto-info {
+            background: #f8f8f8;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .contacto-info h4 {
+            color: #8b4513;
+            margin-bottom: 0.5rem;
+        }
+
+        .contacto-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .contacto-item i {
+            margin-right: 0.5rem;
+            width: 20px;
+        }
+
+        /* Botones */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #8b4513, #a0522d);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
+        }
+
+        .btn-secondary {
+            background: #fff;
+            color: #8b4513;
+            border: 2px solid #8b4513;
+        }
+
+        .btn-secondary:hover {
+            background: #8b4513;
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: #8b4513;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-content {
+                flex-direction: column;
+            }
+
+            .nav-item {
+                text-align: center;
+                border-bottom: 1px solid #eee;
+            }
+
+            .gobierno-grid,
+            .gobierno-grid-centered {
+                grid-template-columns: 1fr;
+            }
+
+            .presidente-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Estados de enfoque */
+        a:focus,
+        button:focus {
+            outline: 2px solid #8b4513;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">
+                    <img src="imagenes/logo.jpg" alt="Logo H. Ayuntamiento de Miahuatlán" onerror="this.style.display='none'; this.parentNode.innerHTML='MIA';">
+                </div>
+                <div>
+                    <div class="header-title">H. Ayuntamiento de Miahuatlán</div>
+                    <div class="header-subtitle">Gobierno Municipal 2022-2025</div>
+                </div>
+            </div>
+            <div class="contact-info">
+                <div>📞 (228) 830-5592</div>
+                <div>📧 segunda_miahuatlan@hotmail.com</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegación principal -->
+    <nav class="nav-main">
+        <div class="nav-content">
+            <a href="Prototipo.html" class="nav-item">Inicio</a>
+            <a href="NuestroGobierno.html" class="nav-item active">Nuestro Gobierno Municipal</a>
+            <a href="Tramites.html" class="nav-item">Trámites y Servicios</a>
+            <a href="Contacto.html" class="nav-item">Contacto</a>
+            <a href="Conoce.html" class="nav-item">Conoce tu municipio</a>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="Prototipo.html">Inicio</a> > Nuestro Gobierno Municipal
+    </div>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <h1 class="page-title">Nuestro Gobierno Municipal</h1>
+        <p class="page-subtitle">Conoce a la administración municipal 2022-2025 que trabaja por el desarrollo de Miahuatlán</p>
+
+        <!-- Presidente Municipal - Ancho completo -->
+        <div class="gobierno-card" style="margin-bottom: 2rem;">
+            <div class="card-icon">👤</div>
+            <h2 class="card-title">Presidente Municipal</h2>
+            
+            <div class="presidente-section">
+                <div class="presidente-photo">
+                    <img src="imagenes/presidente.jpg" alt="Presidente Municipal" onerror="this.style.display='none'; this.parentNode.innerHTML='Foto del<br>Presidente<br>Municipal';">
+                </div>
+                <div class="presidente-info">
+                    <div class="presidente-name">[Nombre del Presidente Municipal]</div>
+                    <div class="presidente-title">Presidente Municipal Constitucional de Miahuatlán</div>
+                    <p class="card-description">
+                        El Presidente Municipal es el representante del Poder Ejecutivo Municipal y responsable de la administración pública del municipio. Su gestión se enfoca en el desarrollo integral de Miahuatlán y el bienestar de sus habitantes.
+                    </p>
+                    
+                    <div class="contacto-info">
+                        <h4>Información de Contacto</h4>
+                        <div class="contacto-item">
+                            <span>📞</span> Teléfono: (228) 830-5592
+                        </div>
+                        <div class="contacto-item">
+                            <span>📧</span> Email: segunda_miahuatlan@hotmail.com
+                        </div>
+                        <div class="contacto-item">
+                            <span>📍</span> Ubicación: Plaza de Armas S/N, C.P. 91410
+                        </div>
+                        <div class="contacto-item">
+                            <span>🕒</span> Horario de atención: Lunes a Viernes 9:00 - 15:00 hrs
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Organigrama y Plan - Centrados -->
+        <div class="gobierno-grid-centered">
+            <!-- Organigrama -->
+            <div class="gobierno-card">
+                <div class="card-icon">📊</div>
+                <h2 class="card-title">Organigrama</h2>
+                <p class="card-description">
+                    Consulta la estructura organizacional completa del H. Ayuntamiento de Miahuatlán, incluyendo todas las dependencias, direcciones y departamentos municipales.
+                </p>
+                <a href="documentos/organigrama.pdf" class="btn" target="_blank">
+                    📄 Ver Organigrama (PDF)
+                </a>
+            </div>
+
+            <!-- Plan Municipal de Desarrollo -->
+            <div class="gobierno-card">
+                <div class="card-icon">📋</div>
+                <h2 class="card-title">Plan Municipal de Desarrollo</h2>
+                <p class="card-description">
+                    Conoce los objetivos, estrategias y líneas de acción que guían el desarrollo integral del municipio durante la presente administración 2022-2025.
+                </p>
+                <a href="documentos/plan-municipal-desarrollo.pdf" class="btn" target="_blank">
+                    📄 Ver Plan de Desarrollo (PDF)
+                </a>
+                <br><br>
+                <a href="#" class="btn btn-secondary">
+                    📊 Seguimiento de Metas
+                </a>
+            </div>
+        </div>
+
+        <!-- Sección adicional de información -->
+        <div class="gobierno-card" style="margin-top: 2rem;">
+            <div class="card-icon">ℹ️</div>
+            <h2 class="card-title">Información Adicional</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+                <div>
+                    <h4 style="color: #8b4513; margin-bottom: 0.5rem;">Periodo de Gobierno</h4>
+                    <p>2022 - 2025</p>
+                </div>
+                <div>
+                    <h4 style="color: #8b4513; margin-bottom: 0.5rem;">Tipo de Gobierno</h4>
+                    <p>Municipal Constitucional</p>
+                </div>
+                <div>
+                    <h4 style="color: #8b4513; margin-bottom: 0.5rem;">Estado</h4>
+                    <p>Veracruz de Ignacio de la Llave</p>
+                </div>
+                <div>
+                    <h4 style="color: #8b4513; margin-bottom: 0.5rem;">Región</h4>
+                    <p>Centro del Estado de Veracruz</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 H. Ayuntamiento de Miahuatlán, Veracruz. Todos los derechos reservados.</p>
+            <p>Plaza de Armas S/N, C.P. 91410 Miahuatlán, Veracruz, México</p>
+            <p>Teléfono: (228) 830-5592 | Internacional: +52 228 830-5592</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navegación activa
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                    alert('Funcionalidad en desarrollo');
+                }
+            });
+        });
+
+        // Funcionalidad para documentos PDF
+        document.querySelectorAll('a[href$=".pdf"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const fileName = this.getAttribute('href').split('/').pop();
+                if (this.getAttribute('href').startsWith('documentos/')) {
+                    e.preventDefault();
+                    alert(`Abriendo documento: ${fileName}\n\nEste enlace abrirá el archivo PDF cuando esté disponible en la carpeta 'documentos/' del servidor.`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

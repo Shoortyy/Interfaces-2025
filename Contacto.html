@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - H. Ayuntamiento de Miahuatlán, Ver.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #4a3a2a;
+            background-color: #faf8f5;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: #faf8f5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #8b4513;
+            overflow: hidden;
+            padding: 8px;
+            border: 3px solid #d4af37;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .header-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            text-align: right;
+            font-size: 0.9rem;
+        }
+
+        /* Navegación principal */
+        .nav-main {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            padding: 0 2rem;
+        }
+
+        .nav-item {
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            color: #4a3a2a;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: #faf8f5;
+            border-bottom-color: #8b4513;
+            color: #8b4513;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            font-size: 0.9rem;
+            color: #666;
+            background: #f5f5f5;
+        }
+
+        .breadcrumb a {
+            color: #8b4513;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contenido principal */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #4a3a2a;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        /* Grid de contacto */
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contacto-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contacto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #8b4513, #a0522d);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #4a3a2a;
+        }
+
+        .card-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        /* Información de contacto */
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background: #f8f8f8;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .info-item:hover {
+            background: #e8e8e8;
+        }
+
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #8b4513, #a0522d);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .info-content h4 {
+            color: #8b4513;
+            margin-bottom: 0.2rem;
+        }
+
+        .info-content p {
+            color: #666;
+            margin: 0;
+        }
+
+        /* Redes sociales */
+        .redes-sociales {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .red-social {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1.2rem;
+            background: #f8f8f8;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #4a3a2a;
+            transition: all 0.3s ease;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .red-social:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .red-social.facebook:hover {
+            background: #1877f2;
+            color: white;
+        }
+
+        .red-social.twitter:hover {
+            background: #1da1f2;
+            color: white;
+        }
+
+        .red-social.youtube:hover {
+            background: #ff0000;
+            color: white;
+        }
+
+        .red-icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Mapa */
+        .mapa-container {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .mapa-frame {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 8px;
+            background: #f0f0f0;
+        }
+
+        .mapa-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            text-align: center;
+        }
+
+        /* Formulario de contacto */
+        .contacto-form {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #4a3a2a;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #8b4513;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #8b4513, #a0522d);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: #8b4513;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-content {
+                flex-direction: column;
+            }
+
+            .nav-item {
+                text-align: center;
+                border-bottom: 1px solid #eee;
+            }
+
+            .contacto-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .redes-sociales {
+                flex-direction: column;
+            }
+
+            .red-social {
+                min-width: auto;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .mapa-frame,
+            .mapa-placeholder {
+                height: 300px;
+            }
+        }
+
+        /* Estados de enfoque */
+        a:focus,
+        button:focus,
+        input:focus,
+        textarea:focus {
+            outline: 2px solid #8b4513;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">
+                    <img src="imagenes/logo.jpg" alt="Logo H. Ayuntamiento de Miahuatlán" onerror="this.style.display='none'; this.parentNode.innerHTML='MIA';">
+                </div>
+                <div>
+                    <div class="header-title">H. Ayuntamiento de Miahuatlán</div>
+                    <div class="header-subtitle">Gobierno Municipal 2022-2025</div>
+                </div>
+            </div>
+            <div class="contact-info">
+                <div>📞 (228) 830-5592</div>
+                <div>📧 segunda_miahuatlan@hotmail.com</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegación principal -->
+    <nav class="nav-main">
+        <div class="nav-content">
+            <a href="Prototipo.html" class="nav-item">Inicio</a>
+            <a href="NuestroGobierno.html" class="nav-item">Nuestro Gobierno Municipal</a>
+            <a href="Tramites.html" class="nav-item">Trámites y Servicios</a>
+            <a href="Contacto.html" class="nav-item active">Contacto</a>
+            <a href="Conoce.html" class="nav-item">Conoce tu municipio</a>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="Prototipo.html">Inicio</a> > Contacto
+    </div>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <h1 class="page-title">Contacto</h1>
+        <p class="page-subtitle">Información de contacto, redes sociales y ubicación del H. Ayuntamiento de Miahuatlán</p>
+
+        <div class="contacto-grid">
+            <!-- Teléfonos del Ayuntamiento -->
+            <div class="contacto-card">
+                <div class="card-icon">📞</div>
+                <h2 class="card-title">Teléfonos de Ayuntamiento</h2>
+                <p class="card-description">Comunícate directamente con las oficinas del H. Ayuntamiento</p>
+                
+                <div class="info-item">
+                    <div class="info-icon">📱</div>
+                    <div class="info-content">
+                        <h4>Teléfono Principal</h4>
+                        <p>(228) 830-5592</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">🌍</div>
+                    <div class="info-content">
+                        <h4>Internacional</h4>
+                        <p>+52 228 830 5592</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">🕒</div>
+                    <div class="info-content">
+                        <h4>Horario de Atención</h4>
+                        <p>Lunes a Viernes: 9:00 AM - 3:00 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Redes Sociales -->
+            <div class="contacto-card">
+                <div class="card-icon">📱</div>
+                <h2 class="card-title">Redes Sociales</h2>
+                <p class="card-description">Síguenos en nuestras redes sociales oficiales para mantenerte informado</p>
+                
+                <div class="redes-sociales">
+                    <a href="#" class="red-social facebook" onclick="openSocialMedia('Facebook')">
+                        <div class="red-icon">📘</div>
+                        <span>Facebook</span>
+                    </a>
+                    
+                    <a href="#" class="red-social twitter" onclick="openSocialMedia('Twitter')">
+                        <div class="red-icon">🐦</div>
+                        <span>Twitter</span>
+                    </a>
+                    
+                    <a href="#" class="red-social youtube" onclick="openSocialMedia('YouTube')">
+                        <div class="red-icon">📺</div>
+                        <span>YouTube</span>
+                    </a>
+                </div>
+                
+                <div style="margin-top: 1.5rem; padding: 1rem; background: #f8f8f8; border-radius: 8px;">
+                    <h4 style="color: #8b4513; margin-bottom: 0.5rem;">¿Qué encontrarás?</h4>
+                    <ul style="color: #666; margin-left: 1rem;">
+                        <li>Noticias y eventos municipales</li>
+                        <li>Avisos importantes para la ciudadanía</li>
+                        <li>Transmisiones en vivo de sesiones de cabildo</li>
+                        <li>Galería de fotos de eventos oficiales</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contacto General de Política Local -->
+            <div class="contacto-card">
+                <div class="card-icon">🏛️</div>
+                <h2 class="card-title">Contacto General de Política Local</h2>
+                <p class="card-description">Para asuntos relacionados con la administración pública y política municipal</p>
+                
+                <div class="info-item">
+                    <div class="info-icon">📧</div>
+                    <div class="info-content">
+                        <h4>Correo Oficial</h4>
+                        <p>segunda_miahuatlan@hotmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">📋</div>
+                    <div class="info-content">
+                        <h4>Asuntos que puedes consultar</h4>
+                        <p>Políticas públicas, programas sociales, proyectos municipales</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">⏱️</div>
+                    <div class="info-content">
+                        <h4>Tiempo de Respuesta</h4>
+                        <p>Máximo 5 días hábiles</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ubicación y Mapa -->
+        <div class="mapa-container">
+            <div class="card-icon" style="margin: 0 auto 1rem;">📍</div>
+            <h2 class="card-title" style="text-align: center; margin-bottom: 1rem;">Ubicación</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+                Encuéntranos en el corazón de Miahuatlán
+            </p>
+            
+            <div class="info-item" style="justify-content: center; margin-bottom: 2rem;">
+                <div class="info-icon">🏢</div>
+                <div class="info-content">
+                    <h4>Dirección Oficial</h4>
+                    <p>Plaza de Armas S/N, C.P. 91410 Miahuatlán, Veracruz, México</p>
+                </div>
+            </div>
+            
+            <!-- Mapa (placeholder) -->
+            <div class="mapa-placeholder" onclick="openMap()">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🗺️</div>
+                <h3 style="margin-bottom: 0.5rem;">Mapa de Ubicación</h3>
+                <p>Haz clic para abrir en Google Maps</p>
+                <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">
+                    Plaza de Armas S/N, Miahuatlán, Veracruz
+                </p>
+            </div>
+        </div>
+
+        <!-- Formulario de Contacto -->
+        <div class="contacto-form">
+            <div class="card-icon" style="margin: 0 auto 1rem;">✉️</div>
+            <h2 class="card-title" style="text-align: center;">Envíanos un Mensaje</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+                ¿Tienes alguna consulta? Escríbenos y te responderemos a la brevedad
+            </p>
+            
+            <form onsubmit="submitContactForm(event)">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label">Nombre completo *</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Correo electrónico *</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Teléfono</label>
+                    <input type="tel" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Asunto *</label>
+                    <input type="text" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Mensaje *</label>
+                    <textarea class="form-control" required placeholder="Escribe tu mensaje aquí..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn">📧 Enviar Mensaje</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 H. Ayuntamiento de Miahuatlán, Veracruz. Todos los derechos reservados.</p>
+            <p>Plaza de Armas S/N, C.P. 91410 Miahuatlán, Veracruz, México</p>
+            <p>Teléfono: (228) 830-5592 | Internacional: +52 228 830-5592</p>
+        </div>
+    </footer>
+
+    <script>
+        // Abrir redes sociales
+        function openSocialMedia(platform) {
+            let url = '';
+            switch(platform) {
+                case 'Facebook':
+                    url = 'https://www.facebook.com/';
+                    break;
+                case 'Twitter':
+                    url = 'https://www.twitter.com/';
+                    break;
+                case 'YouTube':
+                    url = 'https://www.youtube.com/';
+                    break;
+            }
+            
+            alert(`Abriendo ${platform}\n\nEn un sitio real, esto abriría: ${url}\n\nActualmente este enlace no está configurado.`);
+        }
+
+        // Abrir mapa
+        function openMap() {
+            const direccion = 'Plaza de Armas S/N, C.P. 91410 Miahuatlán, Veracruz, México';
+            const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(direccion)}`;
+            
+            if (confirm('¿Deseas abrir la ubicación en Google Maps?')) {
+                window.open(googleMapsUrl, '_blank');
+            }
+        }
+
+        // Enviar formulario de contacto
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            alert('Mensaje enviado correctamente.\n\nTu consulta será enviada a: segunda_miahuatlan@hotmail.com\n\nRecibirás una respuesta en un plazo máximo de 5 días hábiles.');
+            
+            // Limpiar formulario
+            event.target.reset();
+        }
+
+        // Navegación activa
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                    alert('Funcionalidad en desarrollo');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
