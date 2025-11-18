@@ -267,6 +267,18 @@
             color: white;
         }
 
+        /* Nuevo estado para X (antes Twitter) */
+        .red-social.x:hover {
+            background: #000;
+            color: white;
+        }
+
+        /* Estado para Instagram (aprox.) */
+        .red-social.instagram:hover {
+            background: linear-gradient(135deg, #f58529, #dd2a7b, #515bd4);
+            color: white;
+        }
+
         .red-social.youtube:hover {
             background: #ff0000;
             color: white;
@@ -280,6 +292,13 @@
             justify-content: center;
             margin-right: 0.5rem;
             font-size: 1.2rem;
+        }
+
+        .red-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
         }
 
         /* Mapa */
@@ -511,18 +530,27 @@
                 <p class="card-description">Síguenos en nuestras redes sociales oficiales para mantenerte informado</p>
                 
                 <div class="redes-sociales">
-                    <a href="#" class="red-social facebook" onclick="openSocialMedia('Facebook')">
-                        <div class="red-icon">📘</div>
+                    <!-- Facebook: con enlace existente; cámbialo por tu página si lo deseas -->
+                    <a href="https://www.facebook.com/GobiernodeVeracruz/?locale=es_LA" class="red-social facebook" target="_blank" rel="noopener noreferrer">
+                        <div class="red-icon"><img src="imagenes/facebook.svg" alt="Facebook logo"></div>
                         <span>Facebook</span>
                     </a>
-                    
-                    <a href="#" class="red-social twitter" onclick="openSocialMedia('Twitter')">
-                        <div class="red-icon">🐦</div>
-                        <span>Twitter</span>
+
+                    <!-- Instagram: reemplaza la URL por la de tu cuenta -->
+                    <a href="https://www.instagram.com/gobiernodeveracruz/" class="red-social instagram" target="_blank" rel="noopener noreferrer">
+                        <div class="red-icon"><img src="imagenes/instagram.svg" alt="Instagram logo"></div>
+                        <span>Instagram</span>
+                    </a>
+
+                    <!-- X (antes Twitter): reemplaza por tu perfil de X -->
+                    <a href="https://x.com/GobiernoVer" class="red-social x" target="_blank" rel="noopener noreferrer">
+                        <div class="red-icon"><img src="imagenes/X LOGO.avif" alt="X logo"></div>
+                        <span>X</span>
                     </a>
                     
-                    <a href="#" class="red-social youtube" onclick="openSocialMedia('YouTube')">
-                        <div class="red-icon">📺</div>
+                    <!-- YouTube: reemplaza por el canal o vídeo deseado -->
+                    <a href="https://www.youtube.com/@GobVeracruz" class="red-social youtube" target="_blank" rel="noopener noreferrer">
+                        <div class="red-icon"><img src="imagenes/Youtube_logo.png" alt="YouTube logo"></div>
                         <span>YouTube</span>
                     </a>
                 </div>
@@ -650,12 +678,15 @@
         // Abrir redes sociales
         function openSocialMedia(platform) {
             let url = '';
-            switch(platform) {
+                switch(platform) {
                 case 'Facebook':
                     url = 'https://www.facebook.com/';
                     break;
-                case 'Twitter':
-                    url = 'https://www.twitter.com/';
+                case 'Instagram':
+                    url = 'https://www.instagram.com/';
+                    break;
+                case 'X':
+                    url = 'https://x.com/';
                     break;
                 case 'YouTube':
                     url = 'https://www.youtube.com/';

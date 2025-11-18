@@ -404,10 +404,10 @@
             
             <div class="presidente-section">
                 <div class="presidente-photo">
-                    <img src="imagenes/presidente.jpg" alt="Presidente Municipal" onerror="this.style.display='none'; this.parentNode.innerHTML='Foto del<br>Presidente<br>Municipal';">
+                    <img src="imagenes/Presidente_Miahuatlan.jpg" alt="Presidente Municipal" onerror="this.style.display='none'; this.parentNode.innerHTML='Foto del<br>Presidente<br>Municipal';">
                 </div>
                 <div class="presidente-info">
-                    <div class="presidente-name">[Nombre del Presidente Municipal]</div>
+                    <div class="presidente-name">Isidro César Figueroa Jiménez</div>
                     <div class="presidente-title">Presidente Municipal Constitucional de Miahuatlán</div>
                     <p class="card-description">
                         El Presidente Municipal es el representante del Poder Ejecutivo Municipal y responsable de la administración pública del municipio. Su gestión se enfoca en el desarrollo integral de Miahuatlán y el bienestar de sus habitantes.
@@ -441,7 +441,7 @@
                 <p class="card-description">
                     Consulta la estructura organizacional completa del H. Ayuntamiento de Miahuatlán, incluyendo todas las dependencias, direcciones y departamentos municipales.
                 </p>
-                <a href="documentos/organigrama.pdf" class="btn" target="_blank">
+                <a href="documentos/ORGANIGRAMA_COMPLETO_OFICIAL.pdf" class="btn" target="_blank">
                     📄 Ver Organigrama (PDF)
                 </a>
             </div>
@@ -453,13 +453,10 @@
                 <p class="card-description">
                     Conoce los objetivos, estrategias y líneas de acción que guían el desarrollo integral del municipio durante la presente administración 2022-2025.
                 </p>
-                <a href="documentos/plan-municipal-desarrollo.pdf" class="btn" target="_blank">
+                <a href="documentos/059.pdf" class="btn" target="_blank">
                     📄 Ver Plan de Desarrollo (PDF)
                 </a>
                 <br><br>
-                <a href="#" class="btn btn-secondary">
-                    📊 Seguimiento de Metas
-                </a>
             </div>
         </div>
 
@@ -504,17 +501,6 @@
                 if (this.getAttribute('href') === '#') {
                     e.preventDefault();
                     alert('Funcionalidad en desarrollo');
-                }
-            });
-        });
-
-        // Funcionalidad para documentos PDF
-        document.querySelectorAll('a[href$=".pdf"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                const fileName = this.getAttribute('href').split('/').pop();
-                if (this.getAttribute('href').startsWith('documentos/')) {
-                    e.preventDefault();
-                    alert(`Abriendo documento: ${fileName}\n\nEste enlace abrirá el archivo PDF cuando esté disponible en la carpeta 'documentos/' del servidor.`);
                 }
             });
         });

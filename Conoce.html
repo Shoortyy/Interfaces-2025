@@ -261,6 +261,8 @@
             position: relative;
             cursor: pointer;
             transition: transform 0.3s ease;
+            text-decoration: none;
+            color: inherit;
         }
 
         .gallery-item:hover {
@@ -457,7 +459,8 @@
             <a href="NuestroGobierno.html" class="nav-item">Nuestro Gobierno Municipal</a>
             <a href="Tramites.html" class="nav-item">Trámites y Servicios</a>
             <a href="Contacto.html" class="nav-item">Contacto</a>
-            <a href="#" class="nav-item active">Conoce tu municipio</a>
+            <!-- Esta es la página actual, pero igual le dejamos href para poder recargarla -->
+            <a href="ConoceTuMunicipio.html" class="nav-item active">Conoce tu municipio</a>
         </div>
     </nav>
 
@@ -501,7 +504,8 @@
                     </p>
                 </div>
 
-                <a href="#" class="btn" onclick="showHistory()">📖 Ver Historia Completa</a>
+                <!-- Link a página de historia (sin alerta) -->
+                <a href="https://mexico.pueblosamerica.com/i/miahuatlan-3/" class="btn">📖 Ver Historia Completa</a>
             </div>
 
             <!-- Conoce nuestras tradiciones -->
@@ -513,26 +517,39 @@
                 </p>
 
                 <ul class="card-links">
-                    <li><a href="#" onclick="showArtesanias()">Artesanías - Museo Veracruz Local</a></li>
-                    <li><a href="#" onclick="showFerias()">Ferias y festivales - Eventos con Ferias México</a></li>
-                    <li><a href="#" onclick="showPatrimonio()">Patrimonio - Fotografías locales de Visit México</a></li>
+                    <li>
+                        <a href="https://sic.cultura.gob.mx/ficha.php?table=museo&table_id=1721" onclick="showArtesanias()">
+                            Artesanías - Museo Veracruz Local
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/p/Bailes-y-Ferias-en-Miahuatl%C3%A1n-100092317779107/?locale=es_LA" onclick="showFerias()">
+                            Ferias y festivales - Eventos con Ferias México
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://sic.cultura.gob.mx/ficha.php?table=centro_cultural&table_id=233" onclick="showPatrimonio()">
+                            Patrimonio - Fotografías locales de Visit México
+                        </a>
+                    </li>
                 </ul>
 
                 <div class="gallery">
-                    <div class="gallery-item" onclick="showArtesanias()">
-                        <img src="imagenes/artesanias.jpg" alt="Artesanías locales" onerror="this.style.display='none'; this.parentNode.innerHTML='🏺<br>Artesanías<br>Locales';">
+                    <!-- Galería ahora como enlaces con href -->
+                    <a href="https://sic.cultura.gob.mx/ficha.php?table=museo&table_id=1721" class="gallery-item" onclick="showArtesanias()">
+                        <img src="imagenes/artesanias.png" alt="Artesanías locales" onerror="this.style.display='none'; this.parentNode.innerHTML='🏺<br>Artesanías<br>Locales';">
                         <div class="gallery-overlay">
                             <strong>Artesanías</strong><br>
                             Trabajos tradicionales
                         </div>
-                    </div>
-                    <div class="gallery-item" onclick="showFerias()">
-                        <img src="imagenes/feria.jpg" alt="Ferias y festivales" onerror="this.style.display='none'; this.parentNode.innerHTML='🎪<br>Ferias y<br>Festivales';">
+                    </a>
+                    <a href="ferias-festivales-miahuatlan.html" class="gallery-item" onclick="showFerias()">
+                        <img src="imagenes/ferias.jpeg" alt="Ferias y festivales" onerror="this.style.display='none'; this.parentNode.innerHTML='🎪<br>Ferias y<br>Festivales';">
                         <div class="gallery-overlay">
                             <strong>Ferias</strong><br>
                             Eventos anuales
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
 
@@ -559,8 +576,8 @@
                     </ul>
                 </div>
 
-                <a href="#" class="btn" onclick="showLugares()">📸 Ver Lugares de Interés</a>
-                <a href="#" class="btn btn-secondary" onclick="showComida()">🍽️ Comida Típica</a>
+                <!-- Links a secciones de turismo -->
+                <a href="https://www.tripadvisor.com.mx/Tourism-g3191783-Miahuatlan_Central_Mexico_and_Gulf_Coast-Vacations.html" class="btn" onclick="showLugares()">📸 Ver Lugares de Interés</a>
             </div>
         </div>
 
@@ -621,83 +638,5 @@
         </div>
     </footer>
 
-    <script>
-        // Funciones para mostrar contenido
-        function showHistory() {
-            alert('Historia del Municipio\n\n' +
-                  'Esta sección mostraría:\n' +
-                  '• Cronología histórica de Miahuatlán\n' +
-                  '• Fundación y primeros pobladores\n' +
-                  '• Eventos históricos importantes\n' +
-                  '• Evolución del municipio\n' +
-                  '• Personajes destacados\n\n' +
-                  'En el sitio real, esto abriría una página dedicada con información detallada.');
-        }
-
-        function showArtesanias() {
-            alert('Artesanías - Museo Veracruz Local\n\n' +
-                  'Esta sección incluiría:\n' +
-                  '• Enlaces al museo Veracruz local\n' +
-                  '• Galería de artesanías tradicionales\n' +
-                  '• Técnicas ancestrales\n' +
-                  '• Artesanos locales\n' +
-                  '• Talleres y demostraciones\n\n' +
-                  'En el sitio real, esto conectaría con el museo local.');
-        }
-
-        function showFerias() {
-            alert('Ferias y Festivales\n\n' +
-                  'Esta sección conectaría con:\n' +
-                  '• Lista de eventos con link directo de Ferias México\n' +
-                  '• Calendario anual de festividades\n' +
-                  '• Fiestas patronales\n' +
-                  '• Eventos culturales\n' +
-                  '• Tradiciones religiosas\n\n' +
-                  'En el sitio real, esto abriría enlaces a Ferias México.');
-        }
-
-        function showPatrimonio() {
-            alert('Patrimonio Cultural\n\n' +
-                  'Esta sección incluiría:\n' +
-                  '• Link directo de fotografías locales por Visit México\n' +
-                  '• Monumentos históricos\n' +
-                  '• Arquitectura colonial\n' +
-                  '• Sitios de interés cultural\n' +
-                  '• Patrimonio inmaterial\n\n' +
-                  'En el sitio real, esto conectaría con Visit México.');
-        }
-
-        function showLugares() {
-            alert('Lugares de Interés\n\n' +
-                  'Esta sección mostraría:\n' +
-                  '• Fotografías y descripción de lugares visitados por turistas\n' +
-                  '• Guía turística interactiva\n' +
-                  '• Rutas recomendadas\n' +
-                  '• Horarios de visita\n' +
-                  '• Información práctica para turistas\n\n' +
-                  'En el sitio real, esto abriría una galería completa.');
-        }
-
-        function showComida() {
-            alert('Comida Típica del Pueblo\n\n' +
-                  'Esta sección incluiría:\n' +
-                  '• Lista completa de platillos tradicionales\n' +
-                  '• Recetas ancestrales\n' +
-                  '• Restaurantes recomendados\n' +
-                  '• Ingredientes locales\n' +
-                  '• Historia culinaria del municipio\n\n' +
-                  'En el sitio real, esto abriría una sección gastronómica completa.');
-        }
-
-        // Navegación activa
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', function(e) {
-                if (this.getAttribute('href') === '#') {
-                    e.preventDefault();
-                    alert('Funcionalidad en desarrollo');
-                }
-            });
-        });
-    </script>
 </body>
 </html>

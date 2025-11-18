@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Inicio - Municipio de Miahuatlán",
+    "url": "Prototipo.html",
+    "description": "Trabajando juntos por el desarrollo y bienestar de nuestra comunidad.",
+    "keywords": ["inicio","municipio","miahuatlán","portal"]
+  },
+  {
+    "title": "Nuestro Gobierno Municipal",
+    "url": "NuestroGobierno.html",
+    "description": "Conoce a la administración municipal 2022-2025: Presidente Municipal, organigrama y Plan Municipal de Desarrollo.",
+    "keywords": ["presidente","gobierno","organigrama","plan municipal","desarrollo"]
+  },
+  {
+    "title": "Trámites y Servicios",
+    "url": "Tramites.html",
+    "description": "Servicios municipales y trámites en línea: Beca Municipal, renta de espacios públicos, protestas ciudadanas y trámites oficiales.",
+    "keywords": ["trámites","tramites","servicios","beca","renta","protesta","oficial"]
+  },
+  {
+    "title": "Contacto",
+    "url": "Contacto.html",
+    "description": "Información de contacto, ubicación, teléfonos del ayuntamiento y redes sociales oficiales.",
+    "keywords": ["contacto","teléfono","ubicación","redes","correo"]
+  },
+  {
+    "title": "Conoce tu municipio",
+    "url": "Conoce.html",
+    "description": "Historia, cultura, turismo, ferias y festivales, patrimonio y lugares de interés de Miahuatlán.",
+    "keywords": ["historia","cultura","turismo","ferias","patrimonio"]
+  }
+]

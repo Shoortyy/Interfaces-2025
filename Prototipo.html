@@ -168,6 +168,37 @@
             background: #a0522d;
         }
 
+        /* Resultados de búsqueda */
+        .search-results {
+            max-width: 500px;
+            margin: 0.5rem auto 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            overflow: hidden;
+            display: none;
+            z-index: 20;
+        }
+
+        .search-results ul {
+            list-style: none;
+        }
+
+        .search-results li {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+        }
+
+        .search-results li:hover {
+            background: #faf8f5;
+        }
+
+        .search-noresults {
+            padding: 1rem;
+            color: #666;
+        }
+
         /* Secciones principales */
         .main-content {
             max-width: 1200px;
@@ -317,6 +348,7 @@
                 <input type="text" class="search-input" placeholder="Buscar información, trámites, servicios...">
                 <button class="search-btn">🔍 Buscar</button>
             </div>
+            <div class="search-results" aria-live="polite"></div>
         </div>
     </section>
 
@@ -383,18 +415,121 @@
             }
         }
 
-        // Funcionalidad básica de búsqueda
+        // searchIndex se cargará desde search-index.json si es posible
+        let searchIndex = [];
+
+        // Carga externa del índice (recomendado). Si falla, mantenemos searchIndex vacío.
+        (function loadSearchIndex() {
+            fetch('search-index.json', { cache: 'no-store' })
+                .then(response => {
+                    if (!response.ok) throw new Error('No se pudo cargar search-index.json');
+                    return response.json();
+                })
+                .then(json => {
+                    if (Array.isArray(json)) {
+                        searchIndex = json;
+                    }
+                })
+                .catch(err => {
+                    // Fallback: si quieres, dejamos un índice mínimo embebido aquí
+                    console.warn('Fallo al cargar indice de búsqueda:', err);
+                    searchIndex = [
+                        {
+                            title: 'Nuestro Gobierno Municipal',
+                            url: 'NuestroGobierno.html',
+                            description: 'Conoce a nuestro Presidente Municipal, el organigrama del ayuntamiento y el Plan Municipal de Desarrollo.',
+                            keywords: ['presidente','gobierno','organigrama','plan municipal','desarrollo']
+                        },
+                        {
+                            title: 'Trámites y Servicios',
+                            url: 'Tramites.html',
+                            description: 'Beca Municipal Gratuita, renta de espacios públicos, protestas ciudadanas y trámites oficiales en línea.',
+                            keywords: ['trámites','tramites','servicios','beca','renta','protestas','oficial']
+                        },
+                        {
+                            title: 'Contacto',
+                            url: 'Contacto.html',
+                            description: 'Información de contacto, ubicación, teléfonos del ayuntamiento y redes sociales oficiales.',
+                            keywords: ['contacto','teléfono','ubicación','redes','correo']
+                        },
+                        {
+                            title: 'Conoce tu municipio',
+                            url: 'Conoce.html',
+                            description: 'Historia, cultura, turismo, ferias y festivales, patrimonio y lugares de interés de Miahuatlán.',
+                            keywords: ['historia','cultura','turismo','ferias','patrimonio']
+                        }
+                    ];
+                });
+        })();
+
+        // Realiza la búsqueda en el índice
+        function performSearch(query) {
+            const q = query.trim().toLowerCase();
+            const resultsContainer = document.querySelector('.search-results');
+            resultsContainer.innerHTML = '';
+
+            if (!q) {
+                resultsContainer.style.display = 'none';
+                return;
+            }
+
+            const results = searchIndex.map(item => {
+                const haystack = (item.title + ' ' + item.description + ' ' + (item.keywords || []).join(' ')).toLowerCase();
+                // simple scoring: indexOf position or -1
+                const idx = haystack.indexOf(q);
+                const score = idx >= 0 ? 100 - idx : 0;
+                return { item, score };
+            }).filter(r => r.score > 0)
+            .sort((a,b) => b.score - a.score)
+            .map(r => r.item);
+
+            if (results.length === 0) {
+                resultsContainer.innerHTML = '<div class="search-noresults">No se encontraron resultados para "' + escapeHtml(query) + '".</div>';
+                resultsContainer.style.display = 'block';
+                return;
+            }
+
+            const ul = document.createElement('ul');
+            results.forEach(res => {
+                const li = document.createElement('li');
+                li.innerHTML = '<strong>' + escapeHtml(res.title) + '</strong><div style="font-size:0.9rem;color:#666;">' + escapeHtml(res.description) + '</div>';
+                li.addEventListener('click', function() {
+                    window.location.href = res.url;
+                });
+                ul.appendChild(li);
+            });
+
+            resultsContainer.appendChild(ul);
+            resultsContainer.style.display = 'block';
+        }
+
+        // Escape simple HTML to avoid inyectar
+        function escapeHtml(text) {
+            return text.replace(/[&"'<>"]/g, function (c) {
+                return {'&':'&amp;','"':'&quot;',"'":'&#39;','<':'&lt;','>':'&gt;'}[c];
+            });
+        }
+
+        // Click del botón de búsqueda
         document.querySelector('.search-btn').addEventListener('click', function() {
             const query = document.querySelector('.search-input').value;
-            if (query.trim()) {
-                alert(`Buscando: "${query}"\n\nEsta funcionalidad conectaría con el sistema de búsqueda del sitio.`);
-            }
+            performSearch(query);
         });
 
         // Enter en búsqueda
         document.querySelector('.search-input').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
+                e.preventDefault();
                 document.querySelector('.search-btn').click();
+            }
+        });
+
+        // Cerrar resultados al hacer clic fuera
+        document.addEventListener('click', function(e) {
+            const resultsContainer = document.querySelector('.search-results');
+            const searchContainer = document.querySelector('.search-container');
+            if (!searchContainer.contains(e.target) && !resultsContainer.contains(e.target)) {
+                resultsContainer.style.display = 'none';
             }
         });
 
